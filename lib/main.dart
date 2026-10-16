@@ -144,10 +144,15 @@ class _GamePageState extends State<GamePage> {
   }
 
   void newRound() {
-    final shuffled = List<Color>.from(palette)..shuffle(random);
-    options = shuffled.take(4).toList();
-    target = options[random.nextInt(options.length)];
-  }
+  target = palette[random.nextInt(palette.length)];
+  options = [
+    target,
+    Color.lerp(target, Colors.white, 0.10)!,
+    Color.lerp(target, Colors.black, 0.10)!,
+    Color.lerp(target, Colors.white, 0.22)!,
+  ];
+  options.shuffle(random);
+}
 
   void startTimer() {
     timer?.cancel();
