@@ -13,6 +13,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: app
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -41,5 +45,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: color-match-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-          if-no-files-found: error
+          path: app/build/app/outputs/flutter-apk/app-release.apk
